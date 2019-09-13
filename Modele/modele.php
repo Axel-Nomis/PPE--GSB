@@ -9,7 +9,7 @@
 	//fonction qui récupère une liste de login et mdp des Visiteurs
 	function recupIDVisiteur () {
 		//appel de la fonction getBdd
-		getBdd();
+		$bdd=getBdd();
 		//instanciation d'une requête dans une variable
 		$requete = "SELECT * FROM `Visiteur` WHERE login = :login AND mdp = :mdp";
 		$query = $bdd->prepare($requete);
@@ -21,7 +21,7 @@
 	//fonction qui vérifie l'existance des IDs
 	function verifID (){
 		 if (!empty($login) && !empty($mdp)) {
-			recupIDVisiteur();
+			$query=recupIDVisiteur();
 			$donnees = $query->fetch();}//on vérifie chaque ligne et on regarde si un visiteur correspond
 		else {
 			echo "Veuillez remplir tous les champs !";
@@ -34,7 +34,7 @@
 			$quantite = htmlspecialchars($_POST['quantite']);
 			$libelleFraisForfait = htmlspecialchars($_POST['libelleFraisForfait']);
 			if(!empty($quantite) && !empty($libelleFraisForfait)) {
-				getBdd();
+				$bdd=getBdd();
 				$mois = date('F'); //On récupère le mois en cours
 				//Insert des frais hors forfait dans la base
 				$requete = "INSERT INTO `LigneFraisForfait`(idVisiteur, mois, idFraisForfait, quantite) VALUES (:idVisiteur, :mois, :idFraisForfait, :quantite) ON DUPLICATE KEY UPDATE quantite = quantite + :quantite";
@@ -60,7 +60,7 @@
 			$libelle = htmlspecialchars($_POST['libelle']);
 			$prix = htmlspecialchars($_POST['prix']);
 			if(!empty($date) && !empty($libelle) && !empty($prix)) {
-				getBdd();
+				$bdd=getBdd();
 				$mois = date('F'); //On récupère le mois en cours
 				//Insert des frais hors forfait dans la base
 				$requete = "INSERT INTO `LigneFraisHorsForfait`(id, idVisiteur, mois, libelle, dateHF, montant) VALUES (NULL, :idVisiteur, :mois, :libelle, :dateHF, :montant)";
@@ -88,7 +88,7 @@
 			$ModifQuantitéFraisForfait = $_POST['ModifQuantite'];
 			$ModifIdFraisForfait = $_POST['ModifIdFraisForfait'];
 			$mois = date('F');
-			getBdd();
+			$bdd=getBdd();
 			$ModifQuantité = $bdd -> prepare('UPDATE LigneFraisForfait SET quantite = :quantite WHERE idVisiteur = :id AND idFraisForfait= :idFraisForfait AND mois = :mois');
 			$ModifQuantité -> execute(array(':quantite' => $ModifQuantitéFraisForfait, ':id' => $id, ':idFraisForfait' => $ModifIdFraisForfait, ':mois' => $mois));
 			if ($ModifQuantité == true) {
@@ -104,7 +104,7 @@
 	 function suprTableLFraisHorsForfait(){
 		if (isset($_GET['supp'])){
 			if($_GET['supp'] == 'ok'){
-				getBdd();
+				$bdd=getBdd();
 				$id = $_GET['id']; //Récupération de l'id de la ligne du tableau
 				$supprimer = $bdd -> prepare("DELETE FROM LigneFraisHorsForfait WHERE id = :id AND idVisiteur = :idVisiteur");
 				$supprimer -> execute(array(':id' => $id, ':idVisiteur' => $_SESSION['id']));
@@ -120,7 +120,7 @@
 			$ModifMontant = $_POST['ModifMontant'];
 			$ModifIdFraisHorsForfait = $_POST['ModifIdFraisHorsForfait'];
 			$mois = date('F');
-			getBdd();
+			$bdd=getBdd();
 			$ModifQuantitéFraisHorsForfait = $bdd -> prepare('UPDATE LigneFraisHorsForfait SET libelle = :libelle, dateHF = :dateHF, montant = :montant WHERE idVisiteur = :id AND id= :idFraisHorsForfait AND mois = :mois');
 			$ModifQuantitéFraisHorsForfait -> execute(array(':libelle' => $ModifDescription, ':dateHF' => $ModifDate, ':montant' => $ModifMontant, ':id' => $id, ':idFraisHorsForfait' => $ModifIdFraisHorsForfait, ':mois' => $mois));
 			if ($ModifQuantitéFraisHorsForfait == true) {
@@ -135,7 +135,7 @@
 	function connexion(){
 		session_start();
 		if (isset($_POST['login']) && isset($_POST['mdp'])){
-			verifID();
+			$donnees=verifID();
 			if ($donnees == true) { // Si un visiteur correspond{
 				//Création des variables de session
 				$_SESSION['login'] = $donnees['login'];
