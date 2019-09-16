@@ -133,7 +133,7 @@
 	}
 	
 	function connexion(){
-		session_start();
+		verifSession();
 		if (isset($_POST['login']) && isset($_POST['mdp'])){
 			$donnees=verifID();
 			if ($donnees == true) { // Si un visiteur correspond{
@@ -155,7 +155,7 @@
     }
 	
 	function verifExistUtilisateur(){
-		session_start();
+		verifSession();
 		// on vérifie que les variables de session identifiant l'utilisateur existent
 		if (isset($_SESSION['login']) && isset($_SESSION['mdp'])) {
 			$login_sesion = $_SESSION['login'];
@@ -165,6 +165,8 @@
 			$prenom = $_SESSION['prenom'];
 		}
 	}
+
+	function
 
 	function deconnexion(){
 		// On démarre la session
@@ -176,4 +178,126 @@
 		// On redirige le visiteur vers la page d'accueil
 		header ('location: connexion.php');
 	}
+	function verifSession(){
+		if(!session_id()){
+			session_start();
+		}
+	}
+	function recupFraisForfait (){
+		$moisConsultation = $_POST['moisConsult'];
+		$bdd=getBdd();
+		$queryFraisForfait = $bdd -> prepare('SELECT libelle, quantite, idFraisForfait FROM LigneFraisForfait, FraisForfait WHERE LigneFraisForfait.idFraisForfait = FraisForfait.id AND mois = :mois AND idVisiteur = :id');
+		$queryFraisForfait -> execute(array(':mois' => $moisConsultation, ':id' => $id));
+		return $queryFraisForfait;
+	}
+	function recupFraisHorsForfait(){
+		$moisConsultation = $_POST['moisconsult'];
+		$bdd=getBdd();
+		$queryFraisHorsForfait = $bdd -> prepare('SELECT dateHF, libelle, montant, id FROM LigneFraisHorsForfait WHERE mois = :mois AND idVisiteur = :id');
+		$queryFraisHorsForfait -> execute(array(':mois' => $moisConsultation, ':id' => $id));
+		return $queryFraisHorsForfait;
+	}
+	function affichageFrais(){
+		if(isset($_POST['moisConsult'])) {
+			//accès BDD et traitement des données
+			$moisConsultation = $_POST['moisConsult'];
+			$bdd=getBdd();
+			$queryFraisForfait=recupFraisForfait();
+			$queryFraisHorsForfait=recupFraisHorsForfait();
+			$NbDonneesFraisForfait = $queryFraisForfait -> rowcount(); //Vérifie s'il y a des lignes dans la table LigneFraisForfait
+			$rowAllFraisForfait = $queryFraisForfait -> fetchall(); //Récupère toutes les données de la table
+			$NbDonneesFraisHorsForfait = $queryFraisHorsForfait -> rowcount(); //Vérifie s'il y a des lignes dans la table LigneFraisHorsForfait
+			$rowAllFraisHorsForfait = $queryFraisHorsForfait -> fetchall(); //Récupère toutes les données de la table
+
+			// affichage
+			if ($NbDonneesFraisForfait != 0) //Affichage de l'entête s'il y a des lignes dans la table LigneFraisForfait
+			{
+			?>
+				<p>Frais forfaitaires du mois de : <?php if (isset($moisConsultation)) { echo $moisConsultation;} ?></p>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th scope="col">Quantité</th>
+							<th scope="col">Libellé</th>
+							<th scope="col">Opérations</th>
+						</tr>
+			<?php
+					// pour chaque ligne (chaque enregistrement)
+					foreach ( $rowAllFraisForfait as $rowFraisForfait )
+					{
+						// DONNEES de la table LigneFraisForfait
+			?>
+					<form action="consultation.php" method="post">
+						<tr>
+							<td> <input type="number" min="0" name="ModifQuantite" value="<?php echo $rowFraisForfait['quantite']; ?>"> </td>
+							<td>
+								<?php echo $rowFraisForfait['libelle']; ?>
+								<input type="hidden" name="ModifIdFraisForfait" value="<?php echo $rowFraisForfait['idFraisForfait']; ?>">
+							</td>
+							<td>
+								<div class="text-center">
+								<button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> Modifier</button>
+								</div>
+							</td>
+							</tr>
+					</form>
+			<?php
+					} // fin foreach
+			?>
+					</thead>
+				</table>
+			<?php
+			} else { ?>
+				<p>Pas de frais forfaitaires pour le mois en cours !</p>
+			<?php
+			}
+
+			// affichage
+    if ($NbDonneesFraisHorsForfait != 0) //Affichage de l'entête s'il y a des données dans la table LigneFraisHorsForfait
+    {
+    ?>
+      <p>Frais hors forfait du mois de <?php if (isset($moisConsultation)) { echo $moisConsultation;} ?> : </p>
+    	<table class="table table-bordered">
+      	<thead>
+      		<tr>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Opérations</th>
+      		</tr>
+    <?php
+    	// pour chaque ligne (chaque enregistrement)
+    	foreach ( $rowAllFraisHorsForfait as $rowFraisHorsForfait )
+    	{
+        $id = $rowFraisHorsForfait['id'];
+    		// DONNEES A AFFICHER de la table LigneFraisHorsForfait
+    ?>
+      <form action="consultation.php" method="post">
+    		<tr>
+    			<td> <input type="date" name="ModifDate" value="<?php echo $rowFraisHorsForfait['dateHF']; ?>"> </td>
+    			<td> <input type="text" name="ModifDescription" value="<?php echo $rowFraisHorsForfait['libelle']; ?>"> </td>
+          <td>
+            <input type="number" min="0" name="ModifMontant" value="<?php echo $rowFraisHorsForfait['montant']; ?>">
+            <input type="hidden" name="ModifIdFraisHorsForfait" value="<?php echo $rowFraisHorsForfait['id']; ?>">
+          </td>
+          <td>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> Modifier</button>
+              <?php echo '<a href="?id='. $id .'&supp=ok"><button type="button" class="btn btn-primary"><i class="fas fa-trash-alt"></i> Supprimer</button></a>'; ?>
+            </div>
+          </td>
+    		</tr>
+      </form>
+    <?php
+    	} // fin foreach
+    ?>
+          </thead>
+        </table>
+    <?php
+    }
+    else { ?>
+    	<p>Pas de frais hors forfait pour le mois en cours !</p>
+    <?php
+    }
+  }
 ?>
