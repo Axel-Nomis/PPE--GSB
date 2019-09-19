@@ -1,0 +1,268 @@
+/*DEBUT ELEMENTS GENERAUX A TOUTES LES PAGES */
+
+@font-face {
+  font-family:"GB";
+  src:url("../police/GB.ttf");
+}
+
+@font-face {
+  font-family:"GothamBold";
+  src:url("../police/Gotham-Bold.otf");
+}
+
+html, body { /* Remise à zéro des marges de la page */
+  padding: 0;
+  margin: 0;
+  height:100%;
+}
+
+.container {
+  min-width: 75% !important;
+}
+
+  /* --> HEADER <-- */
+header {
+  background-color: #CD5C5C;
+  color: #F8F8FF;
+  font-family: "GothamBold";
+  width: 100%;
+  height: 15%;
+}
+
+header h1 { /* Titre de l'application */
+  letter-spacing: 4px; /* Espacement de 4px entre les lettres du titre */
+}
+
+header #entete { /* Flex sur les blocks du header pour les alignés verticalement et horizontalement */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+header #entete .element:nth-child(2) { /* Grossisement du bloc contenant H1 */
+  flex: 1;
+}
+
+  /* --> FIN HEADER <-- */
+
+  /* --> DEBUT NAV <-- */
+
+.navbar {
+  background-color: #262626;
+  font-family: "GB";
+  height: 7%;
+}
+
+.navbar .navbar-brand {
+  padding-left: 20px;
+}
+
+.navbar a:hover { /* Liens du menu de navigation quand on passe dessus */
+  color: #F8F8FF !important;
+}
+
+.navbar .btn-link { /* Bouton "Se déconnecter" */
+  color: #929292;
+  padding-top: 7px;
+}
+
+.navbar .btn-link:hover { /* Bouton "Se déconnecter" quand on passe dessus*/
+  color: #F8F8FF !important;
+  text-decoration: none !important;
+}
+
+.navbar .dropdown-menu {
+  background-color: #262626;
+}
+
+.navbar .dropdown-item {
+  color: #929292;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #262626;
+}
+
+.dropdown:hover > .dropdown-menu { /* Ajout frais se déroule quand on passe dessus */
+  display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+  pointer-events: none;
+}
+
+  /* --> FIN NAV <-- */
+
+  /* --> DEBUT SECTION <-- */
+
+section {
+  font-family: "GB";
+  background-color: #F8F8FF;
+  min-height: 74%;
+}
+
+section #section { /* Bordure gauche et droite sur le bloc central */
+  border-left: 1px solid #262626;
+  border-right: 1px solid #262626;
+  height: 100%;
+}
+
+section h2 {
+  color: #262626;
+  height: 100px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section label { /*Couleur de tous les labels du site */
+  color: #262626;
+}
+
+section .btn-primary { /* Boutons du site*/
+  background-color: #E95420;
+  border: 1px solid #262626;
+  color: #F8F8FF;
+}
+
+section .btn-primary:hover { /* Survol des boutons du site*/
+    background-color: #262626 !important;
+    border: 1px solid #262626 !important;
+}
+
+section .btn-primary:active { /* Désactivation du :active de boostrap */
+  box-shadow: none !important;
+}
+
+section .btn-primary:focus { /* Désactivation du :focus de boostrap */
+  box-shadow: none !important;
+}
+
+section input:focus { /*Ombre et bordure lorsqu'on rentre une donnée dans l'input */
+  box-shadow: 1px 1px 8px #E95420 !important;
+  border: 1px solid #E95420 !important;
+}
+
+th, th { /* Texte centré dans les tableaux du site */
+  text-align: center !important;
+}
+
+  /* --> FIN SECTION <-- */
+
+  /* --> DEBUT FOOTER <-- */
+
+footer {
+  background-color: #E95420;
+  height: 4%;
+  width: 100%;
+  position: relative;
+}
+
+footer #footer {
+  color: #262626;
+  font-family: "GB";
+  height: 100%;
+}
+
+footer h4 {
+  font-size: 0.8em;
+  height: 74%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 9px;
+}
+
+  /* --> FIN FOOTER <-- */
+
+/*FIN ELEMENTS GENERAUX A TOUTES LES PAGES */
+
+/* DEBUT SECTION connexion.html */
+
+section #connexion { /* Formulaire de connexion */
+  width: 75%;
+  margin: auto;
+}
+
+/* FIN SECTION connexion.html */
+
+/* DEBUT SECTION accueil.html */
+
+section .msgAccueil { /* Message accueil */
+  text-align: center;
+}
+
+/* FIN SECTION accueil.html */
+
+/* DEBUT SECTION fraisForfait.html */
+
+section #formFraisForf {
+  width: 75%;
+  margin: auto;
+}
+
+section select option {
+  color: #262626;
+}
+
+section #formFraisForf .form-control {
+  color: #262626;
+}
+
+section #formFraisForf .form-control:focus {
+  box-shadow: 1px 1px 8px #E95420 !important;
+  border: 1px solid #E95420 !important;
+}
+
+/* FIN SECTION fraisForfait.html */
+
+/* DEBUT SECTION horsForfait.html */
+
+section #formHorsForf {
+  width: 75%;
+  margin: auto;
+}
+/* FIN SECTION horsForfait.html */
+
+/* DEBUT SECTION consultation.html */
+
+section .moisEtat select option {
+  color: #262626;
+}
+
+section #consultationMois .form-control {
+  color: #262626;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+section #consultationMois .form-control:focus {
+  box-shadow: 1px 1px 8px #E95420 !important;
+  border: 1px solid #E95420 !important;
+}
+
+section .moisEtat { /*Flex sur le choix du mois et l'état de la fiche*/
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+section .moisEtat .element:nth-child(2) { /*Centrer l'état de la fiche*/
+  margin: auto;
+}
+
+section .moisEtat p { /*Enlève la marge extérieur du bas du paragraphe */
+  margin-bottom: 0px !important;
+}
+
+section .tabConsult p {
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* FIN SECTION consultation.html */

@@ -1,11 +1,11 @@
 <?php
 		//fonction qui récupère la BDD
 	function getBdd(){
-		$bdd = new PDO('mysql:host=localhost;dbname=gsbV2;charset=utf8',
+		$bdd = new PDO('mysql:host=localhost;dbname=db_GSB;charset=utf8',
   'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 		return $bdd;
 	}
-	
+
 	//fonction qui récupère une liste de login et mdp des Visiteurs
 	function recupIDVisiteur () {
 		//appel de la fonction getBdd
@@ -15,9 +15,9 @@
 		$query = $bdd->prepare($requete);
 		//récupération de la liste des IDs dans une variable;
 		$query->execute(array(':login' => $login, ':mdp' => $mdp));
-		return $query;	
+		return $query;
 	}
-	
+
 	//fonction qui vérifie l'existance des IDs
 	function verifID (){
 		 if (!empty($login) && !empty($mdp)) {
@@ -28,7 +28,7 @@
 		}
 		return $donnees;
 	}
-	
+
 	function insertFraisForfait(){
 		if (isset($_POST['libelleFraisForfait']) && isset($_POST['quantite'])) {
 			$quantite = htmlspecialchars($_POST['quantite']);
@@ -53,7 +53,7 @@
 			}
 		}
 	}
-	
+
 	function insertFraisHorsForfait(){
 		if (isset($_POST['date']) && isset($_POST['libelle']) && isset($_POST['prix'])) {
 			$date = htmlspecialchars($_POST['date']);
@@ -79,10 +79,10 @@
 			}
 		}
 	}
-	
+
 	//Mofification de la table LigneFraisForfait
 	function modifTableLFraisForfait(){
-		
+
 		if (isset($_POST['ModifQuantite']) && isset($_POST['ModifIdFraisForfait'])) {
 
 			$ModifQuantitéFraisForfait = $_POST['ModifQuantite'];
@@ -99,7 +99,7 @@
 			}
 		}
 	}
-	
+
 	 //Supression d'une ligne de la table LigneFraisHorsForfait par méthode GET
 	 function suprTableLFraisHorsForfait(){
 		if (isset($_GET['supp'])){
@@ -111,7 +111,7 @@
 			}
 		}
 	}
-	
+
 	//Mofification de la table LigneFraisHorsForfait
 	function modifTableLFraisHorsForfait(){
 		if (isset($_POST['ModifDate']) && isset($_POST['ModifDescription']) && isset($_POST['ModifMontant'])) {
@@ -131,7 +131,7 @@
 			}
 		}
 	}
-	
+
 	function connexion(){
 		verifSession();
 		if (isset($_POST['login']) && isset($_POST['mdp'])){
@@ -153,7 +153,7 @@
 			echo "Veuillez remplir tous les champs !";
 		}
     }
-	
+
 	function verifExistUtilisateur(){
 		verifSession();
 		// on vérifie que les variables de session identifiant l'utilisateur existent
@@ -165,8 +165,6 @@
 			$prenom = $_SESSION['prenom'];
 		}
 	}
-
-	function
 
 	function deconnexion(){
 		// On démarre la session
@@ -300,4 +298,5 @@
     <?php
     }
   }
+}
 ?>
