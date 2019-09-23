@@ -116,4 +116,4 @@ INSERT INTO `Visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, 
 ('f4', 'Gest', 'Alain', 'agest', 'dywvt', '30 avenue de la mer', '13025', 'Berre', '1985-11-01');
 
 
-SELECT * FROM `Visiteur` WHERE login = :login AND mdp = :mdp;
+SELECT * FROM Visiteur;

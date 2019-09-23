@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-dark bg-*">
   <div class="container">
-    <a class="navbar-brand" href="#">Visiteur</a>
+    <a class="navbar-brand" href="#">GSB</a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item"><a class="nav-link" href="accueil.php"><i class="fas fa-home"></i> Accueil</a></li>
       <li class="nav-item"><a class="nav-link" href="consultation.php"><i class="fas fa-eye"></i> Consultation frais</a></li>
@@ -12,9 +12,5 @@
         </div>
       </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-user"></i> Mon compte</a></li>
-      <li class="nav-item"> <a class="nav-link" href="deconnexion.php"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
-  </ul>
   </div>
 </nav>
