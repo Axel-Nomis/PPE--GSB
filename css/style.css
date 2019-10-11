@@ -1,17 +1,6 @@
 /*DEBUT ELEMENTS GENERAUX A TOUTES LES PAGES */
 
 @font-face {
-  font-family:"GB";
-  src:url("../police/GB.ttf");
-}
-
-@font-face {
-  font-family:"GothamBold";
-  src:url("../police/Gotham-Bold.otf");
-}
-
-
-@font-face {
     font-family: 'GearsOfPeace';
     src: url('../police/GearsOfPeace.ttf') format('truetype');
 }
@@ -22,6 +11,11 @@
     src: url('../police/SLIDER.ttf') format('truetype');
 }
 
+
+@font-face {
+    font-family: 'SpaceMeatball';
+    src: url('../police/SpaceMeatball.ttf') format('truetype');
+}
 
 
 
@@ -39,13 +33,13 @@ html, body { /* Remise à zéro des marges de la page */
 header {
   background-color: #516782;
   color: #F8F8FF;
-  font-family: "GothamBold";
+  font-family: "SpaceMeatball";
   width: 100%;
-  height: 15%;
+  height: 25%;
 }
 
 header h1 { /* Titre de l'application */
-  font-family: 'SLIDER';
+  font-family: 'SpaceMeatball';
   font-size: 60px;
 }
 
@@ -115,6 +109,7 @@ header #entete .element:nth-child(2) { /* Grossisement du bloc contenant H1 */
 
 section {
   font-family: "GB";
+  margin-top: 5%;
 
 }
 
@@ -127,22 +122,25 @@ section h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 section label { /*Couleur de tous les labels du site */
   color: #262626;
 }
 
-section .btn-primary { /* Boutons du site*/
-  background-color: #4682B4;
-  border: 1px solid #262626;
-  color: #F8F8FF;
-}
 
-section .btn-primary:hover { /* Survol des boutons du site*/
-    background-color: #87CEEB !important;
-    border: 1px solid #262626 !important;
+/* PARAMETRE BOUTONS DU SITE*/
+section .btn-primary{ /* Boutons du site*/
+  background-color: #4682B4;        /*bleu foncé pour le fond*/
+  border: 2px solid #FFFFFF;        /*blanc pour le contour*/
+  color: #F8F8FF;                   /*un autre blanc pour la police d'écriture*/
 }
+section .btn-primary:hover { /* Survol des boutons du site*/
+    background-color: #F8F8FF !important;
+    color: #4682B4;
+    border: 1px solid #4682B4;
+  }
 
 section .btn-primary:active { /* Désactivation du :active de boostrap */
   box-shadow: none !important;
@@ -151,8 +149,12 @@ section .btn-primary:active { /* Désactivation du :active de boostrap */
 section .btn-primary:focus { /* Désactivation du :focus de boostrap */
   box-shadow: none !important;
 }
+/*FIN BOUTONS DU SITE*/
 
-section input:focus { /*Ombre et bordure lorsqu'on rentre une donnée dans l'input */
+
+
+
+section input:focus{ /*Ombre et bordure lorsqu'on rentre une donnée dans l'input */
   box-shadow: 2px 2px 8px #225CA3 !important;
   border: 3px solid #225CA3 !important;
 }
@@ -197,7 +199,7 @@ footer h4 {
 
 /* DEBUT SECTION connexion.html */
 
-#connexion { /* Formulaire de connexion */
+#connexion{ /* Formulaire de connexion */
 	width:30%;
   margin: 8% auto;
   padding:2% 5%;
@@ -206,6 +208,12 @@ footer h4 {
   border-radius: 10%;
 
 }
+
+
+
+
+
+
 
 
 #t{
@@ -246,8 +254,8 @@ section #formFraisForf .form-control {
 }
 
 section #formFraisForf .form-control:focus {
-  box-shadow: 1px 1px 8px #E95420 !important;
-  border: 1px solid #E95420 !important;
+  box-shadow: 1px 1px 8px #4682B4 !important;
+  border: 1px solid #4682B4 !important;
 }
 
 /* FIN SECTION fraisForfait.html */
@@ -266,16 +274,16 @@ section .moisEtat select option {
   color: #262626;
 }
 
-section #consultationMois .form-control {
-  color: #262626;
-  margin-left: 10px;
-  margin-right: 10px;
+/*section #consultationMois .form-control {
+  border: 2px solid #262626;
+  background-color: #F8F8FF;
+  border-radius: 10%;
 }
 
 section #consultationMois .form-control:focus {
-  box-shadow: 1px 1px 8px #E95420 !important;
-  border: 1px solid #E95420 !important;
-}
+  box-shadow: 1px 1px 8px #516782 !important;
+  border: 1px solid #516782 !important;
+}*/
 
 section .moisEtat { /*Flex sur le choix du mois et l'état de la fiche*/
   display: flex;

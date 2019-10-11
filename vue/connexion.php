@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="shortcut icon" href="./img/favicon.ico" />
     <title>Galaxy Swiss Bourdin</title>
   </head>
   <body id="t">
@@ -23,7 +24,7 @@
         <label for="mdp">Mot de passe :</label>
         <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Saisir votre mot de passe" required>
       </div>
-      <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Se connecter</button>
+      <button type="submit" class="btn btn-primary">Se connecter</button>
       <button type="reset" class="btn btn-primary">Annuler</button>
     </form>
     <?php
@@ -40,7 +41,7 @@
 
 <!-- FIN FOOTER -->
 <?php
-include("Vue/footer.php")
+require("vue/footer.php")
 ?>
 
 </html>

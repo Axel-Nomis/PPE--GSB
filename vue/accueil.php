@@ -8,16 +8,11 @@
     <link rel="stylesheet" href="./css/all.css">
     <link rel="shortcut icon" href="./img/favicon.ico" />
 
+
     <title>Galaxy Swiss Bourdin</title>
   </head>
   <body>
 
-
-
-    <?php
-      require ('fonctions.php');
-      accueil();
-     ?>
 
   </body>
 </html>

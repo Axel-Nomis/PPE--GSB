@@ -5,6 +5,8 @@
       <div class="element">
         <span id="date_heure"></span>
         <script type="text/javascript">window.onload = date_heure('date_heure');</script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
       </div>
     </div>
 </header>

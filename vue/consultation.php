@@ -12,11 +12,6 @@
     <title>Galaxy Swiss Bourdin</title>
   </head>
   <body>
-    <?php
-      require_once ('fonctions.php');
-      consultation();
-    ?>
-
-
+    
   </body>
 </html>

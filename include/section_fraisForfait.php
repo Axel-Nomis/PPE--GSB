@@ -1,7 +1,7 @@
 <section>
   <div class="container" id="section">
     <h2>Ajout Frais Forfaitaire</h2>
-    <form action="fraisForfait.php" method="post" id="formFraisForf">
+    <form action="index.php" method="post" id="formFraisForf">
       <div class="form-group">
         <label for="libelleFraisForfait"> Choisissez votre type de frais forfaitaire : </label>
         <select class="form-control" id="libelleFraisForfait" name="libelleFraisForfait">

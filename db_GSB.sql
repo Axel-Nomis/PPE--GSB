@@ -49,7 +49,7 @@ CREATE TABLE LigneFraisForfait (
 );
 
 CREATE TABLE LigneFraisHorsForfait (
-	id				VARCHAR(255) 	NOT NULL,
+	id				INT 			NOT NULL		auto_increment,
     idVisiteur		VARCHAR(255) 	NOT NULL,
     mois			VARCHAR(255) 	NOT NULL,
     libelle			VARCHAR(255) 	NOT NULL,
@@ -116,4 +116,5 @@ INSERT INTO `Visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, 
 ('f4', 'Gest', 'Alain', 'agest', 'dywvt', '30 avenue de la mer', '13025', 'Berre', '1985-11-01');
 
 
-SELECT * FROM Visiteur;
+INSERT INTO FicheFrais (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValide`, `dateModif`, `idEtat`)
+VALUES ('a131','October', 0, 0,'2019-10-09', 'CL');

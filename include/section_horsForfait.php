@@ -1,7 +1,7 @@
 <section>
   <div class="container" id="section">
     <h2>Ajout frais hors forfait</h2>
-    <form action="horsForfait.php" method="post" id="formHorsForf">
+    <form action="index.php" method="post" id="formHorsForf">
       <div class="form-group">
         <label for="date">Date : </label>
         <input type="date" class="form-control" id="date" name="date" placeholder="Entrez une date" required>
