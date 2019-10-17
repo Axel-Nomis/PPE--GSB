@@ -8,11 +8,22 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/all.css">
     <script src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./js/date.js"></script>
+    <link rel="shortcut icon" href="./img/favicon.ico" />
     <title>Galaxy Swiss Bourdin</title>
   </head>
   <body>
 
-    
+  <?php
+
+
+    require("./vue/header.php");
+    require('./vue/nav_after.php');
+    require('./include/section_horsForfait.php');
+    require("./vue/footer.php");
+
+
+  ?>
+
+
   </body>
 </html>

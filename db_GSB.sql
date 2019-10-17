@@ -49,7 +49,7 @@ CREATE TABLE LigneFraisForfait (
 );
 
 CREATE TABLE LigneFraisHorsForfait (
-	id				INT 			NOT NULL		auto_increment,
+	id				INT 			auto_increment,
     idVisiteur		VARCHAR(255) 	NOT NULL,
     mois			VARCHAR(255) 	NOT NULL,
     libelle			VARCHAR(255) 	NOT NULL,
